@@ -16,11 +16,16 @@ describe('test/jsonrpc-client.test.js', () => {
   afterEach(mm.restore);
 
   it('should work', function* () {
+    const ctx = app.mockContext({
+      user: {
+        workid: 'foo',
+      },
+    });
     try {
-      const res = yield app.jsonrpcClient.invoke('recoitem.offline', { itemId: 'foo' });
+      const res = yield app.jsonrpcClient.get('foo').invoke('recoitem.offline', { itemId: 'foo' }, ctx);
       assert(res);
     } catch (e) {
-      throw e;
+      assert(e.code);
     }
   });
 });

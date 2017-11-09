@@ -53,6 +53,11 @@ exports.jsonrpcClient = {
       headers: {
         // custom headers
       },
+      getHeaders(ctx) {
+        return {
+          // return custom headers
+        }
+      },
       beforeRequest(options) {
         // before request hook
       },
@@ -91,6 +96,8 @@ Multiple instance:
 ```js
 yield app.jsonrpcClient.get('foo').invoke('foo.bar', {  })
 ```
+
+> When `getHeaders` is set, you need to pass `ctx` as the third argument when invoke the method.
 
 # License
 
