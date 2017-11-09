@@ -91,3 +91,8 @@ Multiple instance:
 ```js
 yield app.jsonrpcClient.get('foo').invoke('foo.bar', {  })
 ```
+
+# License
+
+MIT License
+
